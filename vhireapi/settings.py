@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ex9%8q0&yg24^7@*@u!fbzwr@ucrbt(olf8(8c9s)uj$f(^49y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -96,8 +96,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 CLOUDINARY_URL = os.environ.get(
-    "CLOUDINARY_URL",
-    "cloudinary://375493776671914:k9wxWk_FlFmCFvL8GeXcx9sf5p4@hqkqbc8cw",
+    "CLOUDINARY_URL"
 )
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 REST_FRAMEWORK = {
