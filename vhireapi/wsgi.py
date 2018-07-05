@@ -11,5 +11,5 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vhire.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vhireapi.settings")
 application = get_wsgi_application()
