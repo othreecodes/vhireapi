@@ -12,5 +12,5 @@ $ python mange.py createsuperuser
 ```
 
 ## Swagger
-[](swagger.png)
+![](swagger.png)
 View The android app here [VHire](https://github.com/othreecodes/vhire)
