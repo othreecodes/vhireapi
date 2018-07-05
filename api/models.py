@@ -1,7 +1,7 @@
 import random
 
 from cloudinary.models import CloudinaryField
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 # Create your models here.
@@ -13,6 +13,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 states = [
     "Abia",
@@ -94,6 +95,32 @@ states_long_lat = [
 ]
 
 
+
+class VUserManager(UserManager):
+
+    def _create_user(self, username, email, password, **extra_fields):
+        """
+        Create and save a user with the given username, email, and password.
+        """
+    
+        email = self.normalize_email(email)
+        username = self.model.normalize_username(username)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(None, email, password, **extra_fields)
+
 class User(AbstractUser):
     email = models.EmailField(
         _('email address'),
@@ -116,6 +143,7 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
+    objects = VUserManager()
 
 class Location(models.Model):
     NIGERIAN_STATES = [('', 'Select State')] + [(x, x) for x in states]
