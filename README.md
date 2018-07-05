@@ -1,6 +1,6 @@
 # vhireapi
 
-A Service Hire Platform (API) Built with Django and Django-rest-framework
+A Service Hire Platform (API) Built with Django and Django-rest-framework (WIP)
 ```
 $ git clone this repo
 $ virtualenv venv -p /usr/bin/python3.7
