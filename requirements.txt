@@ -11,7 +11,7 @@ django-extensions==1.9.9
 django-filter==1.1.0
 django-heroku==0.2.0
 django-rest-swagger==2.1.2
-djangorestframework==3.7.7
+djangorestframework==3.11.2
 firebase-admin==2.7.0
 future==0.16.0
 grpcio==1.8.4
